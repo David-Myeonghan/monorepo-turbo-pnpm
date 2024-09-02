@@ -44,8 +44,15 @@ jobs:
           workingDir: packages/design-system
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
+      - name: Find PR related to push
+        id: find-pr
+        run: |
+          PR_NUMBER=$(gh pr list --head ${{ github.repository }}:${{ github.ref_name }} --json number --jq '.[0].number')
+          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+
       - name: PR 에 댓글로 남기기
-        uses: thollander/actions-comment-pull-request@v1
+        if: env.PR_NUMBER != ''
+        uses: thollander/actions-comment-pull-request@v2.5.0
         env:
           GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB }}
         with:
