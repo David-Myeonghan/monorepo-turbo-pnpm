@@ -30,13 +30,13 @@ jobs:
           version: "8.15.6"
           run_install: false
 
-#      - name: Install Dependency
-#        run: pnpm install
-#        working-directory: packages/design-system
+      - name: Install Dependency
+        run: pnpm install
+        working-directory: packages/design-system
 
       #👇 Adds Chromatic as a step in the workflow
       - name: Publish Chromatic
-      - uses: chromaui/action@v1
+        uses: chromaui/action@v1
         # Options required for Chromatic's GitHub Action
         with:
           #👇 Chromatic projectToken,
