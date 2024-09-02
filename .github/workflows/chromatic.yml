@@ -67,4 +67,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB }}
         with:
             message: "Storybook build: ${{ steps.chromatic.outputs.storybookUrl }}"
-            pull-request-number: ${{ env.PR_NUMBER }}
+#            pull-request-number: ${{ env.PR_NUMBER }}
