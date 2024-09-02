@@ -1,0 +1,70 @@
+# .github/workflows/chromatic.yml
+
+# Workflow name
+name: 'Chromatic Publish'
+
+# Event for the workflow
+on:
+  pull_request:
+    branches: '*'
+    paths:
+      - packages/design-system/src/**
+
+# List of jobs
+jobs:
+  test:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - name: 코드 저장소의 코드를 체크아웃
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: ">=20"
+#          cache: 'yarn'
+
+      - name: pnpm 설치
+        uses: pnpm/action-setup@v2
+        with:
+          version: "8.15.6"
+          run_install: false
+
+      - name: Install Dependency
+        run: pnpm install
+        working-directory: packages/design-system
+
+      #👇 Adds Chromatic as a step in the workflow
+      - name: Publish Chromatic
+        id: chromatic
+        uses: chromaui/action@latest
+        # Options required for Chromatic's GitHub Action
+        with:
+          #👇 Chromatic projectToken,
+          workingDir: packages/design-system
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+#      - name: Find PR related to push
+#        id: get_pr
+#        env:
+#          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        run: |
+#          PR_NUMBER=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+#          "https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/pulls" \
+#          | jq '.[0].number')
+#
+#          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+        
+
+      - name: PR 에 댓글로 남기기
+#        if: env.PR_NUMBER != ''
+        uses: thollander/actions-comment-pull-request@v2.5.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB }}
+        with:
+            message: "Storybook build: ${{ steps.chromatic.outputs.storybookUrl }}"
+            pull-request-number: ${{ env.PR_NUMBER }}
