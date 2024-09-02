@@ -46,6 +46,8 @@ jobs:
 
       - name: Find PR related to push
         id: find-pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           PR_NUMBER=$(gh pr list --head ${{ github.repository }}:${{ github.ref_name }} --json number --jq '.[0].number')
           echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
