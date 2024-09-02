@@ -36,10 +36,10 @@ jobs:
 
       #👇 Adds Chromatic as a step in the workflow
       - name: Publish Chromatic
-        uses: chromaui/action@v1
+        uses: chromaui/action@latest
         # Options required for Chromatic's GitHub Action
         with:
           #👇 Chromatic projectToken,
-          workingDir: apps/docs
+          workingDir: packages/design-system
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
