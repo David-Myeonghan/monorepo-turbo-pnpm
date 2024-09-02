@@ -6,7 +6,7 @@ name: 'Chromatic Publish'
 # Event for the workflow
 on:
   pull_request:
-    branches: *
+    branches: '*'
     paths:
       - packages/design-system/src/**
 
