@@ -42,4 +42,10 @@ jobs:
           #👇 Chromatic projectToken,
           workingDir: packages/design-system
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: PR 에 댓글로 남기기
+        uses: thollander/actions-comment-pull-request@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB }}
+        with:
+            message: "Storybook build: ${{ steps.chromatic.outputs.storybookUrl }}"
