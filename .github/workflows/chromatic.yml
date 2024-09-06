@@ -6,7 +6,8 @@ name: 'Chromatic Publish'
 # Event for the workflow
 on:
   pull_request:
-    branches: '*'
+    types: ['synchronize', 'opened', 'reopened']
+    branches: ['main']
     paths:
       - packages/design-system/src/**
 
