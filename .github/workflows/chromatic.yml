@@ -64,7 +64,7 @@ jobs:
 #        if: env.PR_NUMBER != ''
         uses: thollander/actions-comment-pull-request@v2.5.0
         env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB2 }}
         with:
             message: "Storybook build: ${{ steps.chromatic.outputs.storybookUrl }}"
 #            pull-request-number: ${{ env.PR_NUMBER }}
