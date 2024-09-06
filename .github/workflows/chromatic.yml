@@ -47,6 +47,7 @@ jobs:
           #👇 Chromatic projectToken,
           workingDir: packages/design-system
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.SECRET_GITHUB2 }}
 
 #      - name: Find PR related to push
 #        id: get_pr
