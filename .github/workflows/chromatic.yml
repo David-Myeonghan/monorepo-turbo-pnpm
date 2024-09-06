@@ -62,9 +62,9 @@ jobs:
 
       - name: PR 에 댓글로 남기기
 #        if: env.PR_NUMBER != ''
-        uses: thollander/actions-comment-pull-request@v2.5.0
+        uses: thollander/actions-comment-pull-request@v1
         env:
           GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB }}
         with:
-            message: "Storybook build: ${{ steps.chromatic.outputs.storybookUrl }}"
+            message: "Storybook : ${{ steps.chromatic.outputs.storybookUrl }}"
 #            pull-request-number: ${{ env.PR_NUMBER }}
