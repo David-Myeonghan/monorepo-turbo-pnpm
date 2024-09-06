@@ -58,6 +58,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB2 }}
         with:
-          message: |
-            Hello world ! :wave:
-#          message: "Storybook build: ${{ steps.chromatic.outputs.storybookUrl }}"
+#          message: |
+#            Hello world ! :wave:
+          message: "Storybook build: ${{ steps.chromatic.outputs.storybookUrl }}"
