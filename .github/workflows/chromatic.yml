@@ -5,8 +5,12 @@ name: 'Chromatic Publish'
 
 # Event for the workflow
 on:
+  push:
+    branches:
+      - main
   pull_request:
-    branches: '*'
+    types: ['synchronize', 'opened', 'reopened']
+    branches: ['main']
     paths:
       - packages/design-system/src/**
 
@@ -29,7 +33,7 @@ jobs:
 #          cache: 'yarn'
 
       - name: pnpm 설치
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: "8.15.6"
           run_install: false
@@ -47,24 +51,13 @@ jobs:
           #👇 Chromatic projectToken,
           workingDir: packages/design-system
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-
-#      - name: Find PR related to push
-#        id: get_pr
-#        env:
-#          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        run: |
-#          PR_NUMBER=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-#          "https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/pulls" \
-#          | jq '.[0].number')
-#
-#          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
-        
+          token: ${{ secrets.SECRET_GITHUB2 }}
 
       - name: PR 에 댓글로 남기기
-#        if: env.PR_NUMBER != ''
         uses: thollander/actions-comment-pull-request@v2.5.0
         env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB2 }}
         with:
-            message: "Storybook build: ${{ steps.chromatic.outputs.storybookUrl }}"
-            pull-request-number: ${{ env.PR_NUMBER }}
+#          message: |
+#            Hello world ! :wave:
+          message: "Storybook build: ${{ steps.chromatic.outputs.storybookUrl }}"

@@ -28,8 +28,8 @@ export interface ButtonProps {
  * Primary UI component for user interaction
  */
 export const Button = ({
-  primary = false,
-  size = 'medium',
+  primary = true,
+  size = 'large',
   backgroundColor,
   label,
   ...props
