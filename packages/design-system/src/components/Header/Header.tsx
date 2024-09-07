@@ -1,14 +1,17 @@
 import { ChangeEvent, useState } from "react";
-import { Outlet } from "react-router-dom";
 import classNames from "classnames/bind";
-import { Button } from "components";
 
 import styles from "./Header.module.scss";
-import RecentView from "./RecentView";
+import Button from "../Button/Button";
 
 const cx = classNames.bind(styles);
 
-const Header = () => {
+interface HeaderProps {
+  logo: string;
+  onClick: () => void;
+}
+
+const Header = ({ logo, onClick }: HeaderProps) => {
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearchFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,10 +23,10 @@ const Header = () => {
     <div className={cx("container")}>
       <header className={cx("header")}>
         <div className={cx("logo")}>
-          <img src={"/logo/pokemon.webp"} alt="pokemon logo" />
+          <img src={logo} alt="logo" />
         </div>
 
-        <RecentView />
+        {/*<RecentView />*/}
 
         <div className={cx("right-section")}>
           <div className={cx("search-box")}>
@@ -32,15 +35,13 @@ const Header = () => {
               value={searchValue}
               onChange={handleSearchFieldChange}
             />
-            <Button color={"error"} onClick={(e) => console.log(e)}>
+            <Button color={"primary"} onClick={onClick}>
               Search
             </Button>
           </div>
         </div>
       </header>
-      <div className={cx("content-wrapper")}>
-        <Outlet />
-      </div>
+      <div className={cx("content-wrapper")}>{/*<Outlet />*/}</div>
     </div>
   );
 };

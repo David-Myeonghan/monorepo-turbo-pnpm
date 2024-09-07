@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import classNames from "classnames/bind";
-import { Loading } from "components";
+import { Loading } from "../../components";
 
 import styles from "./LazyLoadImage.module.scss";
 
