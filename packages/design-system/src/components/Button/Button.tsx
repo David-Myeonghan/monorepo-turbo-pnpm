@@ -10,7 +10,7 @@ interface ButtonProps {
   size?: ButtonSizeType;
   color?: ButtonColorType;
   children?: React.ReactNode;
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const cx = classNames.bind(styles);
