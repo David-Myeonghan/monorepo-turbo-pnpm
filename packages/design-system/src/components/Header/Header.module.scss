@@ -1,0 +1,68 @@
+@use "styles/color.module" as color;
+@use "styles/text.module" as text;
+
+.container {
+  margin: 0 auto;
+  height: 100%;
+  max-width: 1080px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  box-sizing: border-box;
+  border: 1px solid black;
+  height: 60px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 8px 12px;
+  background-color: map-get(color.$background, header);
+}
+
+.logo {
+  border: 1px solid grey;
+  border-radius: 16px;
+  width: 160px;
+  height: 50px;
+
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.menu-box {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-input {
+  height: 24px;
+  padding: 8px 12px;
+  border-radius: 68px;
+}
+
+.content-wrapper {
+  //flex: 1;
+  //height: calc(100vh - 60px);
+}
