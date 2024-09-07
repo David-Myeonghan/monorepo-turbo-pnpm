@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 interface TypographyProps {
   children?: React.ReactNode;
   size: TypographySizeType;
-  tag?: string;
+  // tag?: string;
 }
 const Typography = ({ children, size = "t3" }: TypographyProps) => {
   const className = cx(size);
