@@ -24,11 +24,7 @@ export default function AccordionList({ postList }: Props) {
     selectedIndex === index ? "open" : "close";
 
   const handleAccordionClick = (index: number) => {
-    if (selectedIndex === null) {
-      setSelectedIndex(index);
-    } else {
-      setSelectedIndex(null);
-    }
+    setSelectedIndex(index);
   };
 
   return postList?.map((item, index) => (
