@@ -5,6 +5,7 @@ import { Typography } from "@repo/design-system/components";
 import Header from "./components/Header";
 import HeroImage from "./components/HeroImage";
 import Try from "./components/Try";
+import Questions from "./components/Questions";
 
 const cx = classNames.bind(styles);
 
@@ -14,6 +15,7 @@ export default function Home() {
       <Header />
       <HeroImage />
       <Try />
+      <Questions />
     </div>
   );
 }
