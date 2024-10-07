@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
 html,
 body {
   box-sizing: border-box;
@@ -5,6 +7,8 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
+
+  font-family: Noto Sans KR;
 }
 
 .container {
